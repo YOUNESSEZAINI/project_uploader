@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>المشاريع المرفوعة</h1>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">اسم المشروع</th>
+            <th scope="col">تاريخ الرفع</th>
+            <th scope="col">الملف</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for project in projects %}
+        <tr>
+            <td>{{ project.name }}</td>
+            <td>{{ project.date_posted }}</td>
+            <td><a href="{{ url_for('uploaded_file', filename=project.filename) }}">تحميل</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
